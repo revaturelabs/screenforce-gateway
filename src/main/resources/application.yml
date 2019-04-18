@@ -42,4 +42,4 @@ management:
 eureka:
     client:
         service-url:
-            defaultZone: ${CALIBER_EUREKA_SERVER_URL}
+            defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
