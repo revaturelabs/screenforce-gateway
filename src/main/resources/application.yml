@@ -1,45 +1,45 @@
 spring:
-  application:
-    name: screenforce-gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-      - id: tech-screening-service
-        uri: lb://tech-screening-service
-        predicates:
-        - Path=/screening/**
-        filters:
-        - RewritePath=/screening/(?<path>.*), /$\{path}
-      - id: screening-admin-service
-        uri: lb://screening-admin-service
-        predicates:
-        - Path=/admin/**
-        filters:
-        - RewritePath=/admin/(?<path>.*), /$\{path}
-      - id: report-screening-service
-        uri: lb://report-screening-service
-        predicates:
-        - Path=/report/**
-        filters:
-        - RewritePath=/report/(?<path>.*), /$\{path}       
-    config:
-      uri: http://localhost:8080
+    application:
+        name: screenforce-gateway
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+                    routes:
+                    - id: tech-screening-service
+                      uri: lb://tech-screening-service
+                      predicates:
+                      - Path=/screening/**
+                      filters:
+                      - RewritePath=/screening/(?<path>.*), /$\{path}
+                    - id: screening-admin-service
+                      uri: lb://screening-admin-service
+                      predicates:
+                      - Path=/admin/**
+                      filters:
+                      - RewritePath=/admin/(?<path>.*), /$\{path}
+                    - id: report-screening-service
+                      uri: lb://report-screening-service
+                      predicates:
+                      - Path=/report/**
+                      filters:
+                      - RewritePath=/report/(?<path>.*), /$\{path}       
+                    config:
+                      uri: http://localhost:8080
       
 server:
-  port: 8080
+    port: 8080
   
 security:
-  basic:
-    enabled: false
+    basic:
+        enabled: false
 
 management:
-  security:
-    enabled: false
+    security:
+        enabled: false
 
 eureka:
-  client:
-    service-url:
-      defaultZone: ${CALIBER_EUREKA_SERVER_URL}
+    client:
+        service-url:
+            defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
