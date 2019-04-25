@@ -6,27 +6,27 @@ spring:
             discovery:
                 locator:
                     enabled: true
-                    routes:
-                    - id: tech-screening-service
-                      uri: lb://tech-screening-service
-                      predicates:
-                      - Path=/screening/**
-                      filters:
-                      - RewritePath=/screening/(?<path>.*), /$\{path}
-                    - id: screening-admin-service
-                      uri: lb://screening-admin-service
-                      predicates:
-                      - Path=/admin/**
-                      filters:
-                      - RewritePath=/admin/(?<path>.*), /$\{path}
-                    - id: report-screening-service
-                      uri: lb://report-screening-service
-                      predicates:
-                      - Path=/report/**
-                      filters:
-                      - RewritePath=/report/(?<path>.*), /$\{path}       
-                    config:
-                      uri: http://localhost:8080
+            routes:
+            - id: tech-screening-service
+              uri: lb://tech-screening-service
+              predicates:
+              - Path=/screening/**
+              filters:
+              - RewritePath=/screening/(?<path>.*), /$\{path}
+            - id: screening-admin-service
+              uri: lb://screening-admin-service
+              predicates:
+              - Path=/admin/**
+              filters:
+              - RewritePath=/admin/(?<path>.*), /$\{path}
+            - id: report-screening-service
+              uri: lb://report-screening-service
+              predicates:
+              - Path=/report/**
+              filters:
+              - RewritePath=/report/(?<path>.*), /$\{path}       
+        config:
+            uri: http://localhost:8080
       
 server:
     port: 8080
