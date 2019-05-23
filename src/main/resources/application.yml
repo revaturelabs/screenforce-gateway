@@ -2,8 +2,8 @@ server:
   port: 8081
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+    serviceUrl:
+      defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
 spring:
   application:
     name: screenforce-gateway
@@ -25,8 +25,8 @@ spring:
         - Path=/admin/**
         filters:
         - RewritePath=/admin/(?<path>.*), /$\{path}
-      - id: report-screening-service
-        uri: lb://report-screening-service
+      - id: screening-report-service
+        uri: lb://screening-report-service
         predicates:
         - Path=/report/**
         filters:
